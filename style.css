@@ -43,7 +43,7 @@ html, body {
 }
 
 #theDisplay #theInput {
-    padding-top: 0;
+    padding-top: 5px;
 }
 
 #theButtons {

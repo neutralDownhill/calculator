@@ -1,3 +1,4 @@
+// GLOBAL VARIABLES
 let firstNumb;
 let operator;
 let secondNumb;
@@ -8,6 +9,7 @@ let theAnswer = null;
 let btnPushed;
 
 
+// FORMULAS
 function add(a, b) {
     return a + b;
 }
@@ -27,7 +29,6 @@ function divide(a, b) {
 function modulo(a, b) {
     return a % b;
 }
-
 
 
 function equals(input) {
@@ -65,25 +66,61 @@ function equals(input) {
 
 
 
-
+// EVENT LISTENERS
 const theInputDisplay = document.querySelector('#theInput');
 const theAnswerDisplay = document.querySelector('#theAnswer');
 
 const numberButtons = document.querySelectorAll('.num');
-numberButtons.forEach(btn => btn.addEventListener('click', inputNumber));
+numberButtons.forEach(btn => btn.addEventListener('click', screenNumberBtnHander));
 
 
 const operatorButtons = document.querySelectorAll('.operator');
-operatorButtons.forEach(btn => btn.addEventListener('click', inputOperator));
+operatorButtons.forEach(btn => btn.addEventListener('click', screenOperatorBtnHandler));
+
+document.addEventListener('keydown', keyPressHandler);
 
 
 
-function inputNumber(e) {
+// PARSE INPUT
+function keyPressHandler(e) {
+    const key = e.key;
+    console.log(key);
+
+    if(key.includes('0') || key.includes('1') || key.includes('2')
+    || key.includes('3') || key.includes('4') || key.includes('5')
+    || key.includes('6') || key.includes('7') || key.includes('8')
+    || key.includes('9') || key.includes('.')) {
+        inputNumber(key);
+    } else if(key.includes('=') || key.includes('+') || key.includes('-')
+    || key.includes('*') || key.includes('/') || key.includes('%')) {
+        inputOperator(key);
+    } else if(key.includes('Enter')) {
+        inputOperator('=');
+    } else if(key.includes('Backspace')) {
+        inputOperator('C');
+    }
+}
+
+function screenNumberBtnHander(e) {
     btnPushed = e.target.innerText;
+    inputNumber(btnPushed);
+}
 
+function screenOperatorBtnHandler(e) {
+    btnPushed = e.target.innerText;
+    inputOperator(btnPushed);
+}
+
+
+
+// INPUT NUMBERS & DECIMALS
+function inputNumber(btnPushed) {
     console.log(btnPushed);
 
-    if(theInput.length === 0) {
+    if((theInput.length === 0 && btnPushed === '.') || (theInput.length === 2 && btnPushed === '.')) {
+        theInput.push('0' + btnPushed);
+        updateInputDisplay();
+    } else if(theInput.length === 0) {
         theInput.push(btnPushed);
         updateInputDisplay();
     } else if(theInput.length === 2 && theInput[1] === null) {
@@ -92,18 +129,20 @@ function inputNumber(e) {
         theInput.push(btnPushed);
         updateInputDisplay();
         theAnswerDisplay.innerHTML = '&nbsp;'        
+    } else if((theInput.length === 1 && theInput[theInput.length - 1].includes('.') && btnPushed === '.')
+            || (theInput.length === 3 && theInput[theInput.length - 1].includes('.') && btnPushed === '.')) {
+        
     } else if(theInput.length === 1 || theInput.length === 3) {
         theInput[theInput.length - 1] += btnPushed;
         updateInputDisplay();
     } 
 
-    console.log(theInput);
-
 }
 
-function inputOperator(e) {
-    btnPushed = e.target.innerText;
 
+
+//INPUT OPERATORS & EQUALS
+function inputOperator(btnPushed) {
     console.log(btnPushed);
 
     if(btnPushed === 'C') {
@@ -132,6 +171,8 @@ function inputOperator(e) {
 
 }
 
+
+// UPDATE DISPLAY
 function updateInputDisplay() {
     theInputDisplay.innerText = theInput.join(' ');
 }
@@ -143,6 +184,8 @@ function updateAnswerDisplay() {
     theAnswerDisplay.innerText = theAnswer;
 }
 
+
+// CLEAR DISPLAY
 function clearInput() {
     theInput = [];
     theAnswer = null;
