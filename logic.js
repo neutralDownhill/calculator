@@ -46,7 +46,6 @@ function equals(input) {
         theAnswer = multiply(firstNum, secondNum);
         console.log(theAnswer);
     } else if(firstNum === 0 && operator === '/' && secondNum === 0) {
-        theAnswer = divide(firstNum, secondNum);
         alert("That's illegal!");
         theInput.pop();
         theInput.pop();
@@ -55,6 +54,12 @@ function equals(input) {
     } else if(operator === '/') {
         theAnswer = divide(firstNum, secondNum);
         console.log(theAnswer);
+    } else if(operator === '%' && secondNum === 0) {
+        alert("That's illegal!");
+        theInput.pop();
+        theInput.pop();
+        updateInputDisplay();
+        return;
     } else if(operator === '%') {
         theAnswer = modulo(firstNum, secondNum);
         console.log(theAnswer);
