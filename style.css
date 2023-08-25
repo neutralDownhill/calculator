@@ -1,0 +1,106 @@
+html, body {
+    background: #cec9cc;
+    color: #211a21;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    margin: 10px auto 0 auto;
+    max-width: 400px;
+    min-width: 300px;
+}
+
+#theCalculator {
+    aspect-ratio: 9 / 16;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+#theDisplay {
+    background: #211a21;
+    border-radius: 40px;
+    display: flex;
+    flex: 0 0 170px;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 20px 20px 0 20px;
+    width: 360px;
+
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, .5));
+}
+
+#theDisplay > div {
+    flex: 0 1 auto;
+    color: #cec9cc;
+    font-size: 64px;
+    padding: 0 20px 5px 0px;
+    text-align: right;
+}
+
+#theDisplay #theInput {
+    padding-top: 0;
+}
+
+#theButtons {
+    border-radius: 40px;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 20px 20px 20px;
+    width: 360px;
+}
+
+#theButtons > div {
+    display: flex;
+    flex: 1 0 17%;
+    gap: 10px;
+    width: 100%;
+
+}
+
+#theButtons > div > div {
+    background: #908a99;
+    border-radius: 50%;
+    font-size: 48px;
+    flex: 1 1 47.5%;
+    line-height: 62px;
+    text-align: center;
+    width: 100%;
+
+    padding-top: 12px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, .3));
+}
+
+#theButtons > div > div:active, #theButtons > div > div:hover {
+    opacity: 0.8;
+}
+
+#theButtons #clear {
+    border-top-left-radius: 40px;
+}
+
+#theButtons #divide {
+    border-top-right-radius: 40px;
+}
+
+#theButtons #equals {
+    border-bottom-right-radius: 40px;
+}
+
+#theButtons #zero, #theButtons #clear {
+    background: #b5b6e4;
+    border-radius: 40px;
+    flex: 2 1 auto;
+}
+
+#theButtons #equals {
+    background: #4f43ae;
+    color: #cec9cc;
+}
