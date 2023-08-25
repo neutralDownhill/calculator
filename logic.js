@@ -1,7 +1,7 @@
 // GLOBAL VARIABLES
-let firstNumb;
+let firstNum;
 let operator;
-let secondNumb;
+let secondNum;
 
 let theInput = Array();
 let theAnswer = null;
@@ -45,6 +45,13 @@ function equals(input) {
     } else if(operator === '*') {
         theAnswer = multiply(firstNum, secondNum);
         console.log(theAnswer);
+    } else if(firstNum === 0 && operator === '/' && secondNum === 0) {
+        theAnswer = divide(firstNum, secondNum);
+        alert("That's illegal!");
+        theInput.pop();
+        theInput.pop();
+        updateInputDisplay();
+        return;
     } else if(operator === '/') {
         theAnswer = divide(firstNum, secondNum);
         console.log(theAnswer);
