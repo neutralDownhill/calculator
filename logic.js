@@ -45,7 +45,7 @@ function equals(input) {
     } else if(operator === '*') {
         theAnswer = multiply(firstNum, secondNum);
         console.log(theAnswer);
-    } else if(firstNum === 0 && operator === '/' && secondNum === 0) {
+    } else if(operator === '/' && secondNum === 0) {
         alert("That's illegal!");
         theInput.pop();
         theInput.pop();
